@@ -12,9 +12,10 @@ public class Parser
 	{
 
 		// open file for reading
-		Scanner s = new Scanner(new File (fileName, "r"));
+		Scanner s = new Scanner(new File (fileName));
 		// create empty HashMap to store key-value pairs
 		HashMap<String,Object> h = new HashMap<String,Object> ();
+
 
 		// loop through each line in file
 		while(s.hasNextLine())
@@ -22,8 +23,14 @@ public class Parser
 			// read line, removing leading and trailing whitespaces
 			String line = (s.nextLine ()).trim ();
 
+			// find first index of "#" and only use
+			// substring before that occurrence
+			int idx = line.isEmpty () ? -1 : line.indexOf ("#");
+			if (idx != -1)
+				line = line.substring (0, idx);
+
 			// if line is not a comment
-			if (!line.isEmpty () && !line.startsWith("#"))
+			if (!line.isEmpty ())
 			{
 				// split the line around "=" symbol
 				String[] tokens = line.split("=");
