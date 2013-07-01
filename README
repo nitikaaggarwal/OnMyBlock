@@ -1,0 +1,39 @@
+Structure:
+
+	The code consists of two files:
+
+	* Parser.java -- contains the function fileParse
+	that takes the file name as an input and returns
+	a HashMap mapping String keys to their Object
+	values. The value could have type String, Integer
+	or Double, depending on the semantics.
+
+	* Driver.java -- The driver class that shows the
+	Parser in action.
+
+Compilation:
+
+	javac Driver.java Parser.java
+
+Running:
+
+	java Driver <configFileName>
+
+Behavior:
+
+1. The program ignores lines that do not have
+   an "=" symbol or malformed lines containing
+	 more than one occurrences of this symbol.
+2. If there are multiple lines setting the value
+   of the same parameter, the the program will
+	 only use the last defined value.
+3. A line that sets a parameter value, cannot
+   end with a comment. For example:
+     parameter = value    # some comment
+   will not consider "# some comment" as a
+	 comment
+4. Based on requirements, it converts "on", "off",
+   "yes", "no" etc. to their corresponding boolean
+	 values. These can be recovered by using the
+	 "instanceof" functionality in Java before choosing
+	 a reference type for them.
